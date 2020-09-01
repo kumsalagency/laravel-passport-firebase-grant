@@ -34,7 +34,7 @@ class UserRepository implements UserRepositoryInterface
         if (method_exists($model, 'findForPassport')) {
             $user = (new $model)->findForPassport($username);
         } else {
-            $user = (new $model)->where('uid', $username)->first();
+            $user = (new $model)->where('firebase_uid', $username)->first();
         }
 
         if (! $user) {
@@ -59,7 +59,7 @@ class UserRepository implements UserRepositoryInterface
             } catch (InvalidToken $exception) {
 
                 return response()->json([
-                    'message' => 'Unauthorized - Token is invalide: ' . $exception->getMessage()
+                    'message' => 'Unauthorized - Token is invalid: ' . $exception->getMessage()
                 ], 401);
             }
 
