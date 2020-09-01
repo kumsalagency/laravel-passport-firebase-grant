@@ -1,0 +1,34 @@
+{
+  "name": "kumsalagency/laravel-passport-firebase-grant ",
+  "description": "Laravel Passport Google Firebase Grant",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Kumsal Ajans",
+      "email": "developer@kumsalajans.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "KumsalAgency\\Passport\\Firebase\\": "src/"
+    }
+  },
+  "require": {
+    "php": ">=7.2",
+    "illuminate/support": "~5.8.0|^6.0|^7.0",
+    "laravel/passport": "^9.3",
+    "kreait/laravel-firebase": "^2.2"
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "1.x-dev"
+    },
+    "laravel": {
+      "providers": [
+        "KumsalAgency\\Passport\\Firebase\\PassportFirebaseServiceProvider"
+      ]
+    }
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
+}
