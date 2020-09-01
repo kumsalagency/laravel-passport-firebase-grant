@@ -74,10 +74,10 @@ class FirebaseGrant extends AbstractGrant
      */
     protected function validateUser(ServerRequestInterface $request, ClientEntityInterface $client)
     {
-        $username = $this->getRequestParameter('username', $request);
+        $username = $this->getRequestParameter('firebase_uid', $request);
 
         if (\is_null($username)) {
-            throw OAuthServerException::invalidRequest('username');
+            throw OAuthServerException::invalidRequest('firebase_uid');
         }
 
         $firebaseToken = $this->getRequestParameter('firebase_token', $request);
