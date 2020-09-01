@@ -32,10 +32,22 @@ class PassportFirebaseServiceProvider extends ServiceProvider
     public function boot()
     {
         app(AuthorizationServer::class)->enableGrantType(
-            ((new FirebaseGrant(
-                $this->app->make(UserRepository::class),
-                $this->app->make(RefreshTokenRepository::class)
-            ))->setRefreshTokenTTL(Passport::refreshTokensExpireIn())), Passport::tokensExpireIn()
+            $this->makeFirebaseGrant(), Passport::tokensExpireIn()
         );
+    }
+
+    /**
+     * @return FirebaseGrant
+     */
+    protected function makeFirebaseGrant()
+    {
+        $firebaseGrant = new FirebaseGrant(
+            $this->app->make(UserRepository::class),
+            $this->app->make(RefreshTokenRepository::class)
+        );
+
+        $firebaseGrant->setRefreshTokenTTL(Passport::refreshTokensExpireIn());
+
+        return $firebaseGrant;
     }
 }
